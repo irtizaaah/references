@@ -1,2 +1,2 @@
 # References
-Reference Code, notes, and tutorials
+Computer science and programming notes, tutorials, and explanations

@@ -217,10 +217,10 @@ Let's build object oriented classes from scratch. We'll update each solution as 
 ```javascript
     const user3 = Object.create(null);
 
-    user2.name = "Eva";
-    user2.score = 9;
-    user2.increment = function() {
-        user2.score++;
+    user3.name = "Eva";
+    user3.score = 9;
+    user3.increment = function() {
+        user3.score++;
     }
 ```
 ### Generate objects using a function
@@ -229,7 +229,7 @@ Let's build object oriented classes from scratch. We'll update each solution as 
         const newUser = {};
         newUser.name = name;
         newUser.score = score;
-        newUser.increment = function() { // this function is being recreated for every object so it's a sustainable solution
+        newUser.increment = function() { // this function is being recreated for every object so it's an unsustainable solution
             newUser.score++;
         };
 
@@ -295,9 +295,9 @@ The this is bound to the global object(the window) unless the "new" keyword is u
         this.score++; // the 'this' key word label refers to the object left of the method.
     };
 
-    const user6 = new UserCreator("Bob", 2); // this does what const newUser = Object.create(functionStore) used to do (it binds to the prototype and automates all the other things as before)
+    const user7 = new UserCreator("Bob", 2); // this does what const newUser = Object.create(functionStore) used to do (it binds to the prototype and automates all the other things as before)
 
-    user5.increment(); 
+    user7.increment(); 
 ```
 
 ### Generate objects using a class
@@ -313,8 +313,8 @@ The this is bound to the global object(the window) unless the "new" keyword is u
         } 
     }
 
-    const user7 = new UserCreator("Pam", 5); 
-    user7.increment(); 
+    const user8 = new UserCreator("Pam", 5); 
+    user8.increment(); 
 ```
 
 ## This Keyword in depth (this)

@@ -190,3 +190,185 @@ Promised based functionality uses the microtask queue. Anything using the browse
 
     console.log("Me First"); // add to call stack
 ```
+## Object Oriented Programming
+Let's build object oriented classes from scratch. We'll update each solution as we go. 
+
+### JavaScript Objects
+```javascript
+    const user1 = {
+        name: "Will";
+        score: 3;
+        increment: function(){
+            user1.score++
+        }
+    };
+```
+### Dot Notation
+```javascript
+    const user2 = {};
+
+    user2.name = "Tim";
+    user2.score = 6;
+    user2.increment = function() {
+        user2.score++;
+    }
+```
+### Object.create
+```javascript
+    const user3 = Object.create(null);
+
+    user2.name = "Eva";
+    user2.score = 9;
+    user2.increment = function() {
+        user2.score++;
+    }
+```
+### Generate objects using a function
+```javascript
+    function userCreator(name, score){
+        const newUser = {};
+        newUser.name = name;
+        newUser.score = score;
+        newUser.increment = function() { // this function is being recreated for every object so it's a sustainable solution
+            newUser.score++;
+        };
+
+        return newUser;
+    }
+
+    const user4 = userCreator("Jim", 4);
+    user4.increment(); 
+```
+### Generate objects using a function and prototype chain
+One of the hidden properties of any object created with userCreator is __proto. When the increment method is invoked from an object, and JavaScript sees it's not one of it's properties, it goes to the prototype which does hold the functionStore function. 
+
+```javascript
+    function userCreator(name, score){
+        const newUser = Object.create(functionStore); // this bonds functionStore to the user using the prototype chain
+        newUser.name = name;
+        newUser.score = score;
+
+        return newUser
+    }
+
+    const functionStore = { 
+        increment = function() { 
+            this.score++; // the 'this' key word label refers to the object left of the method.
+        };
+    }
+
+    const user5 = userCreator("Fin", 8);
+    user5.increment(); 
+```
+### Generate objects using a function and prototype and new
+Functions are all objects.
+
+Methods are functions that are a part of an object, thus the 'this' keyword refers to the object itself.
+
+Regular functions references the global object or window
+
+The this is bound to the global object(the window) unless the "new" keyword is used.
+
+```javascript
+    function UserCreator(name, score){
+        newUser.name = name;
+        newUser.score = score;
+    }
+
+    UserCreator.increment = function() { 
+        this.score++; // here the 'this' refers to object.create() and forms a bond to the prototype property
+    };
+
+    const user6 = new UserCreator("Bob", 2); // this does what const newUser = Object.create(functionStore) used to do (it binds to the prototype and automates all the other things as before)
+
+    user6.increment(); 
+```
+
+### Generate objects using a function and prototype and new
+```javascript
+    function UserCreator(name, score){
+        newUser.name = name;
+        newUser.score = score;
+    }
+
+    UserCreator.increment = function() { 
+        this.score++; // the 'this' key word label refers to the object left of the method.
+    };
+
+    const user6 = new UserCreator("Bob", 2); // this does what const newUser = Object.create(functionStore) used to do (it binds to the prototype and automates all the other things as before)
+
+    user5.increment(); 
+```
+
+### Generate objects using a class
+```javascript
+    class UserCreator()){
+        constructor(name, score){
+            this.name = name;
+            this.score = score;
+        }
+
+        increment() { 
+            this.score++;
+        } 
+    }
+
+    const user7 = new UserCreator("Pam", 5); 
+    user7.increment(); 
+```
+
+## This Keyword in depth (this)
+Functions are all objects.
+
+Methods are functions that are a part of an object, thus the 'this' keyword refers to the object itself.
+
+Regular functions references the global object or window
+
+The this is bound to the global object(the window) unless the "new" keyword is used.
+
+```javascript
+    const object = {
+        var: 'a'
+        method1(){
+            console.log(this); // returns object
+        }
+    };
+
+    object.method2 = function(){
+        console.log(this); // returns object
+    }
+
+    object.method1();
+    object.method2();
+```
+```javascript
+    const object = {
+        var: 'a'
+        method1(){
+            console.log(this); // returns object
+        }
+    };
+
+    function func(){
+        console.log(this); // returns window/global object
+    }
+
+    func();
+```
+```javascript
+    const object = {
+        var: 'a'
+        method1(){
+            console.log(this); // returns object
+        }
+    };
+
+    function Func(val){
+        this.val = val;
+        console.log(this); // returns window/global object
+    }
+
+    const object = new Func('b'); // new operator creates new empty object when used on construction functions and makes this point it/
+```
+
+* If a callback function inside of a method uses the 'this' keyword then it will point to the window/global object because the callback function is a regular function.

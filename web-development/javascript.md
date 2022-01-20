@@ -161,8 +161,8 @@ Here are a few things to note:
     console.log(doubledArray);
 ```
 
-# Using JavaScript with the Web (Asynchronous Code and Promises)
-## Asynchronous Code
+## Using JavaScript with the Web (Asynchronous Code and Promises)
+### Asynchronous Code
 When we click on a link and the browser fetches the data from a server, we can still interact freely with the rest of the website. But this shouldn't be possible if you think about it. JavaScript is synchronous, meaning it can't jump from one line to another line of code. So when something like a fetch request is sent, shouldn't it freeze everything and wait until it's recieved a response before continuing?
 
 JavaScript is only one part of what makes up a web browser. There are features and functions we can perform outside of JavaScript in a browser through the web browser API. Event listeners, setTimeout(), and fetch() (really anything that can break the flow of execution) are all asynchronous features outside of JavaScript. 
@@ -171,7 +171,7 @@ While something like 'setTimeout(callback(),1000)' looks like an ordinary JavaSc
 
 Once JavaScript has synchronously gone through all it's code and the execution context is empty, it checks the event queue and executes that. These events are checked at a constant interval (this is called an event loop). 
 
-## Promises
+### Promises
 ES6 introduced promises. Promises handle asynchronous code in a way that avoids using callback functions (the pyramid of doom). 'Two pronged facade' functions are functions that effect both the browser and JavaScript. It returns a 'promise', an object with a value, status, and array of funcitons (named 'unfulfilled') in the JavaScript, whilst executing on the request in the web browser. 
 
 For 'fetch()' a get request is sent to the web browser API. A promise object is returned. The promise's value stores the return value expected from the website, status shows whether that value has been returned yet, and unfulfilled is an array that holds all the functions it will execute once the promise's status has changed.

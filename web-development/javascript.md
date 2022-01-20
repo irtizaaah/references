@@ -1,4 +1,15 @@
 # JavaScript (Behind The Scenes)
+## How does the computer understand JavaScript code?
+### JavaScript Engine
+The JavaScript engine contains lexers, syntax parsers, an interpreter, and a JIT (just-in-time) compiler. 
+
+It determines what the code means by tokenizing and parsing every line of code into an abstract syntax tree. The interpreter (or JIT compiler) then executes the thread of execution by converting it to byte code (or machine code) line by line. 
+
+### JavaScript is Synchronous & Single threaded
+Every thread is executed in order (line by line, top to bottom), making JavaScript synchronous. 
+
+Every thread is handled one at a time (multiple threads cannot be running simultaniously), making JavaScript single threaded.
+
 ## How JavaScript handles data types (Coercion)
 JavaScript is a dynamically typed language. The literals of the variables determine what type a variable is. A variable can be a string, number (floating type only), boolean, and an object. They can also have special values like 'undefined' or 'null'.
 
@@ -24,17 +35,6 @@ JavaScript often automatically/implicitly converts the data type of one variable
         return ("undefined is false");
     }
 ```
-
-## How does the computer understand JavaScript code?
-### JavaScript Engine
-The JavaScript engine contains lexers, syntax parsers, an interpreter, and a JIT (just-in-time) compiler. 
-
-It determines what the code means by tokenizing and parsing every line of code into an abstract syntax tree. The interpreter (or JIT compiler) then executes the thread of execution by converting it to byte code (or machine code) line by line. 
-
-### JavaScript is Synchronous & Single threaded
-Every thread is executed in order (line by line, top to bottom), making JavaScript synchronous. 
-
-Every thread is handled one at a time (multiple threads cannot be running simultaniously), making JavaScript single threaded.
 
 ## How does the JS engine execute every code instruction?
 With every thread of execution, the present variables and functions are loaded into the memory space.

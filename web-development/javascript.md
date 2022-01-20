@@ -372,3 +372,5 @@ The this is bound to the global object(the window) unless the "new" keyword is u
 ```
 
 * If a callback function inside of a method uses the 'this' keyword then it will point to the window/global object because the callback function is a regular function.
+
+*Sources: Will Sentance, Michael O'Halloran, Tony Alicea, Mosh Hamedani*

@@ -1,23 +1,29 @@
-let: block scoping
-
-Asynchrnouse callback:
-Event queue is stored and run once all the execution stack is empty
-
-dynamically typed
-defined for engine
-null for you
-number is floating type
-string
-
-javascript: coercion (every output is a unified type)
-console.log(3 < 2 < 1) => (false < 1) => (0 < 1) => true
-consoel.log('3'+1) => 31
-
-=== (avoids coercion and doesn't convert all of them to the same type)
-
-null, undeifned, "" -> false
-
 # JavaScript (Behind The Scenes)
+## How JavaScript handles data types (Coercion)
+JavaScript is a dynamically typed language. The literals of the variables determine what type a variable is. A variable can be a string, number (floating type only), boolean, and an object. They can also have special values like 'undefined' or 'null'.
+
+JavaScript often automatically/implicitly converts the data type of one variable when it interacts with one of another type. This is called coercion. 
+
+```javascript
+    console.log(3 < 2 < 1)
+    // (3 < 2 < 1) <=> (false < 1) <=> (0 < 1) <=> true
+    console.log('3'+1) => 31
+    // converts 1 to '1' and concatenate the string 3 with 1 and forms '31'
+
+    if(null){ // this is evaluated as false
+        return ("null is true");
+    }
+    else{
+        return ("null is false");
+    }
+
+    if(undefined){ // this is evaluated as false
+        return ("undefined is true");
+    }
+    else{
+        return ("undefined is false");
+    }
+```
 
 ## How does the computer understand JavaScript code?
 ### JavaScript Engine

@@ -171,6 +171,78 @@ While something like 'setTimeout(callback(),1000)' looks like an ordinary JavaSc
 
 Once JavaScript has synchronously gone through all it's code and the execution context is empty, it checks the event queue and executes that. These events are checked at a constant interval (this is called an event loop). 
 
+### Synchronous code
+
+```javascript
+    console.log("start");
+    function loginUser(email, password){
+        setTimeout(()=>{ // simulate wait time when fetching data from a server
+            return {userEmail: email};
+        },1550)
+    }
+    
+    const user = loginUser(devedf@goomail.com, 123456);
+    console.log(user) // this is will output 'undefined' because when this line of code runs, the user data has not been fetched yet
+    
+    console.log("finish");
+```
+### Callbacks
+```javascript
+    console.log("start");
+    function loginUser(email, password, callback){
+        setTimeout(()=>{ // simulate wait time when fetching data from a server
+            callback({userEmail: email}); // pass it to a callback instead of returning the value like before
+        },1550)
+    }
+    
+    const user = loginUser(devedf@goomail.com, 123456, user => {
+        console.log(user); // instead of outputting the return value of user, we pass into a callback function that's run after the asynchronous function is completed
+    });
+    
+    console.log("finish");
+```
+
+### Callback Hell
+```javascript
+    console.log("start");
+    function loginUser(email, password, callback){
+        setTimeout(()=>{ // simulate wait time when fetching data from a server
+            callback({userEmail: email}); // pass it to a callback instead of returning the value like before
+        },1550)
+    }
+    
+    const user = loginUser(devedf@goomail.com, 123456, user => {
+        console.log(user);
+            /*
+                getUserVideos(user.username, videos()=>{ // fetch videos after fetching user
+                    console.log(videos);
+                    getVideoDetails(videos[0], title()=>{ // fetch video details after fetching videos
+                        console.log(title);
+                    
+                    });
+                });
+           */
+    });
+    
+    console.log("finish");
+```
+### Updated Callback
+```javascript
+    console.log("start");
+    function loginUser(email, password, onSuccess, onFailure){ // there's typically two callbacks to handle the two cases
+        //if(onFailure)... // do this if data is not recieved
+        setTimeout(()=>{ // simulate wait time when fetching data from a server
+            onSuccess({userEmail: email}); // do this if data is recieved
+        },1550)
+    }
+    
+    const user = loginUser(devedf@goomail.com, 123456, user => {
+        console.log(user);
+    });
+    
+    console.log("finish");
+```
+
 ### Promises
 ES6 introduced promises. Promises handle asynchronous code in a way that avoids using callback functions (the pyramid of doom). 'Two pronged facade' functions are functions that effect both the browser and JavaScript. It returns a 'promise', an object with a value, status, and array of funcitons (named 'unfulfilled') in the JavaScript, whilst executing on the request in the web browser. 
 
@@ -190,6 +262,50 @@ Promised based functionality uses the microtask queue. Anything using the browse
 
     console.log("Me First"); // add to call stack
 ```
+```javascript
+    function display(futureData){ // is enqueued to microstask queue once promise recieves value
+        console.log(futureData)
+    }
+
+    functionloginUser(smail, password){
+        return promise = new promise((resolve, reject)=>{
+            setTimeout(()=>{ // simulate wait time when fetching data from a server
+                console.log("got the user")
+                resolve({userEmail:email}); 
+            },2000)
+    }; // return promise object
+
+    loginUser('Ed','123')
+        .then(user()=>{console.log(user)});
+        //.then(getVideos()=>{console.log(videos recieved)}); // string along functions instead of the callbacks with the pyramid of doom
+        .catch(err => console.log(err.message));
+```
+## Async Await 
+This is just syntactical sugar for the promises we already saw.
+```javascript
+
+    async function displayUser(){
+        const loggedUser = await loginUser('ed',123) // instead of ".then"
+        console.log(loggedUser)
+    };
+
+    displayUser();
+```
+```javascript
+
+    async function displayUser(){
+        try(){ // catch errors if they pop up
+            const loggedUser = await loginUser('ed',123);
+            console.log(loggedUser);
+        }
+        catch(err){
+            console.log("Failed");
+        }
+    };
+
+    displayUser();
+```
+
 ## Object Oriented Programming
 Let's build object oriented classes from scratch. We'll update each solution as we go. 
 

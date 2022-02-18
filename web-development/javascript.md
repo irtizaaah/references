@@ -277,7 +277,7 @@ Promised based functionality uses the microtask queue. Anything using the browse
         //.then(getVideos()=>{console.log(videos recieved)}); // string along functions instead of the callbacks with the pyramid of doom
         .catch(err => console.log(err.message));
 ```
-## Async Await 
+### Async Await 
 This is just syntactical sugar for the promises we already saw.
 ```javascript
 
@@ -302,7 +302,13 @@ This is just syntactical sugar for the promises we already saw.
 
     displayUser();
 ```
-
+### Event Queue
+```javascript
+    console.log('Synchronous 1'); // 1st to output
+    setTimeout(_=> console.log('Timeout',0)); // 4th to output
+    Promise.resolve().then(_=> console.log('Promise)); // 3rd to output
+    console.log('Synchornous 2'); // 2nd to output
+```
 ## Object Oriented Programming
 Let's build object oriented classes from scratch. We'll update each solution as we go. 
 

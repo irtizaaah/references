@@ -244,7 +244,7 @@ Once JavaScript has synchronously gone through all it's code and the execution c
 ```
 
 ### Promises
-ES6 introduced promises. Promises handle asynchronous code in a way that avoids using callback functions (the pyramid of doom). 'Two pronged facade' functions are functions that effect both the browser and JavaScript. It returns a 'promise', an object with a value, status, and array of funcitons (named 'unfulfilled') in the JavaScript, whilst executing on the request in the web browser. 
+ES6 introduced promises. Promises handle asynchronous code in a way that avoids using callback functions (the pyramid of doom). 'Two pronged facade' functions are functions that effect both the browser and JavaScript. It returns a 'promise' (an object with a value, status, and array of funcitons named 'unfulfilled') whilst executing on the request in the web browser. 
 
 For 'fetch()' a get request is sent to the web browser API. A promise object is returned. The promise's value stores the return value expected from the website, status shows whether that value has been returned yet, and unfulfilled is an array that holds all the functions it will execute once the promise's status has changed.
 

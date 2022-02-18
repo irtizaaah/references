@@ -185,7 +185,7 @@ Once JavaScript has synchronously gone through all it's code and the execution c
     }
     
     const user = loginUser(devedf@goomail.com, 123456);
-    console.log(user) // this is will output 'undefined' because when this line of code runs, the user data has not been fetched yet
+    console.log(user) // this will output 'undefined' because when this line of code runs, the user data has not been fetched yet
     
     console.log("finish");
 ```

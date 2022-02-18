@@ -264,10 +264,6 @@ Promised based functionality uses the microtask queue. Anything using the browse
     console.log("Me First"); // add to call stack
 ```
 ```javascript
-    function display(futureData){ // is enqueued to microstask queue once promise recieves value
-        console.log(futureData)
-    }
-
     functionloginUser(email, password){
         return promise = new promise((resolve, reject)=>{
             setTimeout(()=>{ // simulate wait time when fetching data from a server

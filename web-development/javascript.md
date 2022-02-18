@@ -270,7 +270,7 @@ Promised based functionality uses the microtask queue. Anything using the browse
         console.log(futureData)
     }
 
-    functionloginUser(smail, password){
+    functionloginUser(email, password){
         return promise = new promise((resolve, reject)=>{
             setTimeout(()=>{ // simulate wait time when fetching data from a server
                 console.log("got the user")

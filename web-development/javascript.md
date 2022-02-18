@@ -174,8 +174,6 @@ While something like 'setTimeout(callback(),1000)' looks like an ordinary JavaSc
 Once JavaScript has synchronously gone through all it's code and the execution context is empty, it checks the event queue and executes that. These events are checked at a constant interval (this is called an event loop). 
 
 ### Synchronous code
-*Disclaimer: The loginUser is only a simulation using setTimeout. In reality, setTimeout() and something like a fetch() would be using different event queues*
-
 ```javascript
     console.log("start");
     function loginUser(email, password){

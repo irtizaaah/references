@@ -10,10 +10,12 @@ Every thread is executed in order (line by line, top to bottom), making JavaScri
 
 Every thread is handled one at a time (multiple threads cannot be running simultaniously), making JavaScript single threaded.
 
+This means JavaScript will execute lines of code one after another, but if something like setTimeout() is used then the code would need to run in parallel somehow. This is technically not possible because JavaScript is not multithreaded, so this problem is solved by the JS engine using an event loop (more about it later). 
+
 ## How JavaScript handles data types (Coercion)
 JavaScript is a dynamically typed language. The literals of the variables determine what type a variable is. A variable can be a string, number (floating type only), boolean, and an object. They can also have special values like 'undefined' or 'null'.
 
-JavaScript often automatically/implicitly converts the data type of one variable when it interacts with one of another type. This is called coercion. 
+JavaScript often automatically/implicitly converts the data type of one variable to another when it interacts with another data type. This is called coercion. 
 
 ```javascript
     console.log(3 < 2 < 1)
@@ -84,21 +86,21 @@ Due to this, it is legal to call a function before it was lexically declared, be
 
 **Scope**: The area a piece of code is accessible to other code.
 
-**Local Scope**: The scope is limited to inside of it's closest function.
+**Local Scope**: The scope is limited to inside of the current function.
 
 **Lexical Scope**: A scope where the inner function has access to code in it's outer function. In other words, A function has access to all the variables from it's parent function at all times. 
 
 **Lexical Environment**: This is where the code spacially sits with it's surrounding code. 
 
 A lexical environment object is created for every time a function is invoked. This object contains two things:
-1. Environment record (code in the local scope)
-2. Reference to the outer environment (the code from it's nearest outer scope).
+1. **Environment record** (code in the local scope)
+2. **Reference to the outer environment** (the code from it's nearest outer scope).
 
 *In other words, any variable in-scope of the function is included in it's lexical environment object.
 
 **Scope Chaining**: Nested functions have lexical environments that reference their outer environments. This creates a chain of scopes from the inner most function to the outer function.
 
-innerMost() --acces-to-> inner() --access-to-> outer() --access-to-> global()
+innerMost() --access-to-> inner() --access-to-> outer() --access-to-> global()
 
 So, if a function were to be returned, all the variables present in it's nearest outer environment would come attatched with it. Another way to think of closures is like a function that carries around a little backpack with all the variables it needs. This allows you to store permenant data, protected from the global environment. This idea is called a closure or more accurately, a persistent lexically scoped reference data. 
 
@@ -258,7 +260,7 @@ Promised based functionality uses the microtask queue. Anything using the browse
     }
 
     futureData = fetch("https://twitter.com/regis/tweets/1"); // return promise object
-    futureData.then(display); // add function to unfulfilled arrayin promise object
+    futureData.then(display); // add function to unfulfilled array in promise object
 
     console.log("Me First"); // add to call stack
 ```

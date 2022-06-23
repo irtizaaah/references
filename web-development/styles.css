@@ -12,6 +12,35 @@
     color: var(--secondary-color);
 }
 
+/* CSS grid */
+body{
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+
+    grid-gap: 1em;
+
+    height: auto;
+    width: 100vw;
+}
+
+/* CSS Flexbox */
+div{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-basis: auto; /* sets width (defaut directoin) or height (if column direction) for item*/
+    flex-grow: auto; /* grows width (defaut directoin) or height (if column direction) for item*/
+    flex-shrink: auto; /* shrinks width (defaut directoin) or height (if column direction) for item*/
+
+
+    justify-content: space-around;
+    align-items: center;
+    align-self: start /*override align-item for item*/
+
+}
+
 @media (orientation: portrait) and (max-width: 900px){
     *{
         background-color: var(--secondary-color);

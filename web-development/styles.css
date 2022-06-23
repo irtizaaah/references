@@ -41,6 +41,14 @@ div{
 
 }
 
+.section-1{
+    order: -1;
+}
+
+.section-2{
+    order: 1;
+}
+
 @media (orientation: portrait) and (max-width: 900px){
     *{
         background-color: var(--secondary-color);

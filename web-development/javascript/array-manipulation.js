@@ -35,6 +35,8 @@ output = arr.slice(-2, 3);
 //Including index (length-1)-1, remove elems until index 3-1, return updated arr (immutable)
 print("slice (immutable)", arr, output);
 
+// Tip (slice vs. splice): sPlice ('P' for 'in position (mutable)' & after place (exclusive of first index))
+
 //insert at (mutable)
 arr = [1,2,3];
 arr[1] = "fizz";

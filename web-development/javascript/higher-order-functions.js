@@ -20,7 +20,7 @@ let output = null;
 arr = [1,2,3];
 arr2 = ['a','b','c'];
 output = arr.map((elem,i, arr)=>[elem, arr2[i], arr])
-// takes elem from array, transfroms it using an anonymous function, maps output to new array, and returns new array
+// takes elem from array, transfroms it using an anonymous function, maps return output to new array, and returns new array
 print("map", arr, arr2, output);
 
 // filter
@@ -37,6 +37,6 @@ print("for each", arr, null, output)
 
 // reduce
 arr = [1,2,3];
-output = arr.reduce((prev,curr)=>prev+curr,0);
-// add all elems in an array and return the sum
+output = arr.reduce((prev,curr,i,arr)=>(prev+curr)*(i/(arr.length)),0);
+// iterates through array, accumulates into a single value using an anonymous function, returns accumulated value
 print("reduce", arr, null, output)

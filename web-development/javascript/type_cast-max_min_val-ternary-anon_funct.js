@@ -62,12 +62,4 @@ console.log(funct())
 funct = () => "fizz";
 console.log(funct())
 funct = () => {return "fizz"};
-console.log(funct())
-
-
-
-
-
-
-
-
+console.log(funct());

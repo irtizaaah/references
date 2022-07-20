@@ -20,7 +20,7 @@ let output = null;
 arr = [1,2,3];
 arr2 = ['a','b','c'];
 output = arr.map((elem,i, arr)=>[elem, arr2[i], arr])
-// takes elem from array, transfroms it using an anonymous function, maps return output to new array, and returns new array
+// takes elem from array, transfroms it using an anonymous function, maps output to new array, and returns new array
 print("map", arr, arr2, output);
 
 // filter

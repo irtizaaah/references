@@ -1,12 +1,13 @@
 function print(name="", arr=null, output=null){
   console.log(name)
-  console.log("\tarray: " + arr)
-  console.log("\toutput: "+ output);
+  console.log("\tarray: ", arr)
+  console.log("\toutput: ", output);
   console.log("\n");
 }
 
 let arr = null;
 let arr2 = null;
+let str = null;
 let output = null;
 
 //length
@@ -89,9 +90,15 @@ print("reverse (mutable)", arr, output);
 arr = [1,2,3];
 arr2 = ['a','b','c'];
 output = [arr, arr2]
-print("Concatenate 2 arrays (immutable)", arr, output);
+print("concatenate 2 arrays (immutable)", arr, output);
 
 arr = [1,2,3];
 arr2 = ['a','b','c'];
 output = arr.concat(arr2)
-print("Concatenate 2 arrays (immutable)", arr, output);
+print("concatenate 2 arrays (immutable)", arr, output);
+
+// split (immutable)
+str = "fizz buzz"
+output = str.split(" ") 
+// create substrings from text in str seperated by a space
+print("split (immutable)", str, output);

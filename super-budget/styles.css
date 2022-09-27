@@ -1,0 +1,178 @@
+/* user agent styles are the styles added by the specific browser by default */
+/* CSS specificity: most specific identifier (class) > other identifier (tag) */
+/* CSS cascading: latter tag > prior tag */
+/* CSS inheritence: some properties are inhereited fromo parents by child (i.e. font is, width isn't) */
+
+:root{ /* pseudo-selector selects root of element in DOM tree */
+    --primary-color: blue;
+}
+*{ /* selector selects every element in document */
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-decoration: none;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+html{ 
+    box-sizing: border-box; /* this is an alternative box-sizing where width height INCLUDE padding as opposed to default box sizing (content-box)*/
+}
+
+*,
+*::before,
+*::after { /* every element will inherit the box-sizing from it's root (html) */
+    box-sizing: inherit;
+}
+
+body{
+    background-image: url(calculator-icon.png);
+    background-size: 40px;
+    background-repeat: repeat; 
+    /* 
+    image is repeated in x and y direction to fill background
+    Additional options include "cover", "contain", "no-repeat"
+    these options work for both background-repeat & object-fit
+    */
+}
+
+#title-color{ /* id selectors selects element with id (can only be one unique id per element) */
+    color: var(--primary-color);
+}
+
+label{
+    display: inline-block; 
+    /* 
+    inline lines up elements in row & overlaps with an overflow if it doesn't fit
+    block lines up elements in a column (one element spans one line) & makes extra space for element to fit
+    inline-block lines up elements in elements in a row & wmakes extra space for element to fit
+    */
+    width: 100px;
+}
+
+ul{
+    line-height: 1.5rem; /* property sets space between lines */
+}
+
+nav ul li a:hover{ 
+    /* descendant selector selects EVERY descendant of element */
+    /* pseudo-class selector selects states of an element (i.e. hover) */
+    color: var(--primary-color);
+}
+
+main{
+    display: flex; /* flex */
+    justify-content: center; /* property follows main axis */
+    align-items: flex-start; /* property follow perpendecular axis */
+}
+article{
+    display: flex;
+    flex-direction: column-reverse; /* */
+}
+
+.calculate{
+    background-color: red;
+    order: 2; /* property shifts up order of current element 2 elements ahead */
+}
+
+aside{
+    width: 50vw; /* vw is a unit of size relative to 1% of the viewport's width*/
+}
+
+form{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+}
+
+aside > form { /* child combinator only selects the DIRECT dsecendants of element */
+    background-color: var(--primary-color);
+}
+main > h2 {
+    writing-mode: vertical-lr; /* change direction of text */
+}
+
+h3::before{ /* pseudo-element selects a certain part of an element rather than the element itself */
+    content: "🎯 ";
+}
+
+.input-container{ /* class selectors selects element with class */
+    display: flex;
+    align-items: center;
+}
+
+input + p{ 
+    /* adjacent sibling combinator selects DIRECTLY adjacent elements (but not the element itself) of the same parents */
+    /* ~ (general sibling combinator)  selects GENERALLY adjacent elements (but not the element itself) of the same parent*/
+    display: inline-block;
+}
+
+.bar{ /* .class.class is a combined/compounding class selector */
+    width: 30rem; /* rem is a unit of size relative to the font size of the root element*/
+    height: 3rem;
+    border-style: solid;
+    border-width: 0.3rem;
+}
+.banner{
+    width: 30rem;
+    height: 3rem;
+    border-style: solid;
+    border-width: 0.3rem;
+    overflow: auto;
+    background-image: repeating-linear-gradient(45deg, red 30%, #f06d06 70%); /* https://cssgradient.io/ */
+}
+.banner p{ 
+    font-size: 1em;  /* em is a unit of size relative to the font size of the parent */
+    transform:rotate(-10deg);
+    margin: -30px;
+}
+
+.banner::-webkit-scrollbar { /* hide scrollbar */
+    display: none;  /* Safari and Chrome */
+}
+
+.progress{
+    /* calc()*/
+    width: inherit;
+    height: inherit;
+    margin-top: -15px; /* margin is the space between the border and the outer elements */
+    margin-right: -15px; 
+    /* 
+    -inner margin & -outer margin: takes most -val (moves inner and outer element in same direction)
+    +inner margin & +outer margin: takes most +val (spaces inner element away from outer element)
+    -inner margin & +outer margin: takes difference between val (overlaps inner element ontop of outer element)
+     */
+     background-image: repeating-linear-gradient(45deg, red 30%, #f06d06 70%); /* https://cssgradient.io/ */
+}
+
+table{
+    border-style: solid;
+    border-collapse: collapse; /* proeprty sets cells with adjacent borders to share one border */
+}
+
+table *{
+    border-style: solid;
+}
+
+tbody tr:nth-child(odd){ 
+    /* pseudo-class selects nth child where n is an odd position */
+    /* :not(x) selects the elements without 'x' */
+    background-color: var(--primary-color);
+}
+
+
+iframe[class~="video"]{ /* attribute selector selects elements based on the presence of a certain attribute or attribute with a particular value*/
+    width: 280;
+    height: 157.5; 
+    float: right; /* proprety wraps text around element */
+}
+/* positioning: static, relative, absolute, fixed, sticky */
+/* z-index: order of element on z-axis */
+/* multiple-column layout: column-count, column-width, column-gap...*/
+/* check-boxes */
+/* media-query: max-width */
+
+@media screen and (max-width: 800px) {
+    :root{
+        --primary-color: green;
+    }
+  }

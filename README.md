@@ -1,9 +1,4 @@
-<br />
-<div align="center">
-  <h1 align="center">References</h1>
+# References
 
-  <p align="center">
-    Computer science and programming notes, tutorials, and explanations.
-  </p>
-</div>
+Computer science and programming notes, tutorials, and explanations.
 
